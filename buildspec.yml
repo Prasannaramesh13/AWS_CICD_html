@@ -6,20 +6,20 @@ phases:
         nodejs: 18
     commands:
       - echo "Installing dependencies..."
-      - npm install
+      - sudo npm install
       - echo Installing NGINX
       - sudo apt-get update
       - sudo apt-get install nginx -y
   build:
     commands:
       - echo "Building the node.js application..."
-      - npm run build
+      - sudo npm run build
       - echo Build started on `date`
       - cp index.html /var/www/html/
   post_build:
     commands:
       - echo "Post-build phase: Preparing for deployment..."
-      - npm test  # Optional: Run tests
+      - sudo npm test  # Optional: Run tests
       - echo "Build completed successfully."
       - echo Configuring NGINX
 artifacts:
